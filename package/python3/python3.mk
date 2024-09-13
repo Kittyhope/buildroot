@@ -49,8 +49,19 @@ PYTHON3_DEPENDENCIES = host-python3 libffi
 
 HOST_PYTHON3_DEPENDENCIES = host-autoconf-archive host-expat host-zlib host-libffi
 
+ifeq ($(BR2_PACKAGE_HOST_PYTHON3_PIP),y)
+define HOST_PYTHON3_INSTALL_PIP
+    $(HOST_MAKE_ENV) $(PYTHON3_HOST_BASE_ENV) $(HOST_DIR)/bin/python3 -m ensurepip
+    $(HOST_MAKE_ENV) $(PYTHON3_HOST_BASE_ENV) $(HOST_DIR)/bin/pip3 install --upgrade pip
+endef
+HOST_PYTHON3_POST_INSTALL_HOOKS += HOST_PYTHON3_INSTALL_PIP
+endif
+
 ifeq ($(BR2_PACKAGE_HOST_PYTHON3_TOMLI),y)
-HOST_PYTHON3_DEPENDENCIES += host-python-tomli
+define HOST_PYTHON3_INSTALL_TOMLI
+    $(HOST_MAKE_ENV) $(PYTHON3_HOST_BASE_ENV) $(HOST_DIR)/bin/pip3 install tomli
+endef
+HOST_PYTHON3_POST_INSTALL_HOOKS += HOST_PYTHON3_INSTALL_TOMLI
 endif
 
 ifeq ($(BR2_PACKAGE_HOST_PYTHON3_BZIP2),y)
