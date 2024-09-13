@@ -17,5 +17,8 @@ config BR2_PACKAGE_HOST_PYTHON3_SSL
 	select BR2_PACKAGE_HOST_OPENSSL
 	help
 	  _ssl module for host Python3.
-
+config BR2_PACKAGE_HOST_PYTHON3_TOMLI
+    	bool "host python-tomli"
+    	help
+      	  TOML parser for Python 3 host package.
 endif

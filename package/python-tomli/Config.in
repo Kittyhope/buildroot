@@ -4,3 +4,8 @@ config BR2_PACKAGE_PYTHON_TOMLI
 	  A lil' TOML parser.
 
 	  https://github.com/hukkin/tomli
+
+config BR2_PACKAGE_HOST_PYTHON_TOMLI
+    	bool "host python-tomli"
+    	help
+      	  A lil' TOML parser
