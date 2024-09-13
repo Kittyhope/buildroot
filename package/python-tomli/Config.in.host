@@ -1,0 +1,4 @@
+config BR2_PACKAGE_HOST_PYTHON_TOMLI
+    	bool "host-python-tomli"
+    	help
+      	  A lil' TOML parser
